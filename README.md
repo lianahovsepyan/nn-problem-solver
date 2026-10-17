@@ -1,26 +1,27 @@
-# Neural Network Problem Solver — Fashion Item Classification
+# Neural Network Problem Solver - Fashion MNIST
 
-## 1. Project Overview & Introduction
-This project builds a Deep Feedforward Neural Network using TensorFlow / Keras to classify 28x28 grayscale images of clothing into 10 categories.
+## Introduction
+This project builds, trains, and evaluates a TensorFlow/Keras **Sequential Neural Network** to solve an image classification problem using the **Fashion MNIST** dataset (10 clothing categories).
 
-## 2. Dataset & Features
-- **Dataset**: Fashion-MNIST (60,000 train, 10,000 test images).
-- **Classes (10)**: T-shirt/top, Trouser, Pullover, Dress, Coat, Sandal, Shirt, Sneaker, Bag, Ankle boot.
+## How to Run
+1. Open `fashion_mnist_nn.ipynb` in Jupyter Notebook or VS Code.
+2. Execute cells sequentially to inspect data loading, model architecture, training curves, and final test evaluations.
 
-## 3. Neural Network Architecture
-- **Flatten Layer**: Reshapes 28x28 images into a 784-element vector.
-- **Dense Layers**: 128 & 64 hidden units with ReLU activation.
-- **Dropout (20%)**: Prevents overfitting.
-- **Output Layer**: 10 units with Softmax activation.
+## Libraries & Functions Used
+- **TensorFlow / Keras**: `Sequential`, `Flatten`, `Dense`, `Dropout` layers.
+- **NumPy**: Data manipulation and array transformations.
+- **Matplotlib & Seaborn**: Visualizing sample images, training curves (Loss vs Accuracy), and Confusion Matrix.
+- **Scikit-Learn**: `classification_report` and `confusion_matrix` for in-depth metric analysis.
 
-## 4. Model Results & Accuracy
-- **Test Accuracy**: ~88%
-- **Optimizer**: Adam | **Loss**: Sparse Categorical Crossentropy
+## Model Architecture (`model.summary()`)
+- **Input Layer:** `Flatten(input_shape=(28, 28))` - converts 2D images to 784 1D vectors.
+- **Hidden Layer:** `Dense(128, activation='relu')` with `Dropout(0.2)` to prevent overfitting.
+- **Output Layer:** `Dense(10, activation='softmax')` for multi-class classification.
 
-## 5. How to Run
-```bash
-jupyter notebook solution.ipynb
-```
-
-## Submission Status
-Feature branch ready for Pull Request.
+## Results & Observations
+- **Test Accuracy:** ~88% on unseen test images.
+- **Loss vs Accuracy Plots:** Plotted using `history.history` for training and validation splits across epochs.
+- **Key Observations & Confusion Analysis:**
+  - The model performs exceptionally well on distinct categories like *Trouser* and *Ankle boot*.
+  - The most common confusion occurs between visually similar classes, specifically **Shirt vs. T-shirt/top** and **Pullover vs. Coat**.
+  - The `Dropout(0.2)` layer effectively stabilized training and minimized overfitting between training and validation accuracy.
